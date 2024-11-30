@@ -47,11 +47,11 @@ function News() {
     async function getAllNews() {
       const fetchedNews = await fetchArticles();
       setNews(fetchedNews.articles);
+      updateClampClassMobileShort();
+      updateClampClassTabletLong();
     }
-    getAllNews().then((fetchedNew) => fetchedNew);
 
-    updateClampClassMobileShort();
-    updateClampClassTabletLong();
+    getAllNews().then((fetchedNew) => fetchedNew);
 
     const handleResize = () => {
       updateClampClassMobileShort();

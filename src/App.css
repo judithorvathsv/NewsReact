@@ -123,6 +123,10 @@ header img {
   z-index: 10;
 }
 
+.header__nav-topic-dropdown.visible {
+  display: block; /* Show when toggled */
+}
+
 .showned-element {
   display: block;
 }
@@ -294,11 +298,6 @@ li:hover:before {
   max-height: none;
   overflow: visible;
 }
-
-.header__nav-topic-dropdown.visible {
-  display: block; /* Show when toggled */
-}
-
 
 
 @media (min-width: 768px) {
