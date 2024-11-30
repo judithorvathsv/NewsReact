@@ -1,11 +1,131 @@
 import './App.css'; 
-import React, { useEffect } from 'react';
-import {updateClampClassMobileShort, updateClampClassTabletLong, toggleFullscreen} from "./utilities/articleModifier"
+import { useEffect, useState } from 'react';
+
+import {updateClampClassMobileShort, updateClampClassTabletLong} from "./utilities/articleModifier"
+import {fetchArticles } from "./utilities/articleFetch"
+
+import New from './New';
+import FirstNew from './FirstNew';
+import LiveNew from './LiveNew';
+
+export interface INewProps{
+    urlToImage:string;
+    title:string;
+    content:string;
+    publishedAt:string;
+    topic:string;
+}
+
+export interface INewsProps{
+    new: INewProps;
+}
 
 
 function News() {
 
+    const [news, setNews] = useState<INewProps[]>();
+
+
+const topics = ["Home", "News", "Sport", "Business", "Innovation", "Culture", "Arts", "Travel", "Earth"];
+
+const getRandomTopic = () => {
+    const randomIndex = Math.floor(Math.random() * topics.length);
+    return topics[randomIndex];
+};
+
+
+    useEffect(() => {
+
+        async function getAllNews(){
+         const fetchedNews =   await fetchArticles();
+         setNews(fetchedNews.articles);
+        }
+        getAllNews().then(fetchedNew => fetchedNew);
+   
+  
+      updateClampClassMobileShort();
+      updateClampClassTabletLong();
+    
+      const handleResize = () => {
+        updateClampClassMobileShort();
+        updateClampClassTabletLong();
+      };
+  
+      window.addEventListener('resize', handleResize); 
+  
+      return () => {
+        window.removeEventListener('resize', handleResize);
+      };
+    }, []);
+  
+    // const handleArticleClick = (event: React.MouseEvent<HTMLElement>) => {
+    //   const clickedArticle = event.currentTarget; 
+    //   toggleFullscreen(clickedArticle as HTMLElement); 
+    // };
+  
+  
+    const filteredNews = news?.filter(fetchedNew => fetchedNew.title !== "[Removed]");
+    return (
+      <main className="main flex flex-wrap px-4 pt-20 md:pt-30 lg:pt-44">
+
+        {filteredNews!== undefined && filteredNews.length > 0 && (
+            <>
+              
+                {filteredNews.length > 0 && (
+                    <FirstNew 
+                        urlToImage={filteredNews[0].urlToImage} 
+                        title={filteredNews[0].title} 
+                        content={filteredNews[0].content} 
+                        publishedAt={filteredNews[0].publishedAt} 
+                        topic={getRandomTopic()} 
+                        key={filteredNews[0].urlToImage}
+                    />
+                )}
+               
+                {filteredNews.length > 1 && (
+                    <LiveNew 
+                        urlToImage={filteredNews[1].urlToImage} 
+                        title={filteredNews[1].title} 
+                        content={filteredNews[1].content} 
+                        publishedAt={filteredNews[1].publishedAt} 
+                        topic={getRandomTopic()} 
+                        key={filteredNews[1].urlToImage}
+                    />
+                )}
+        
+                <section className="main__older-articles flex flex-1 min-w-1/2 flex-wrap">
+                    {filteredNews.length > 2 && filteredNews.slice(2).map((fetchedNew) => (
+                        <New 
+                            urlToImage={fetchedNew.urlToImage} 
+                            title={fetchedNew.title} 
+                            content={fetchedNew.content} 
+                            publishedAt={fetchedNew.publishedAt} 
+                            topic={getRandomTopic()} 
+                            key={fetchedNew.urlToImage}
+                        />
+                    ))}
+
+
+          {/* <article  onClick={handleArticleClick}                         
+          </article> */}
+  
+
+
+      </section>
+      </>
+  )}
+    </main>
+    )
+  }
+
+
+
+/*
+function News() {
+
   useEffect(() => {
+    getArticles();
+
     updateClampClassMobileShort();
     updateClampClassTabletLong();
   
@@ -359,5 +479,6 @@ function News() {
 </main>
   )
 }
+  */
 
 export default News
