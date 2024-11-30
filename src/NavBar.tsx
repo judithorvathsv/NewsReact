@@ -41,7 +41,7 @@ const NavBar = () => {
                   </span>
                   <input
                     className="w-full bg-transparent text-white py-0 pl-0 pr-0 focus:outline-none"
-                    type="text"
+                    type="text" 
                   />
                 </div>
               </form>
@@ -79,9 +79,8 @@ const NavBar = () => {
           <ul className={`header__nav-topic-dropdown ${isDropdownVisible ? 'visible' : ''} `}>
               {[
                 "Home",
-                "News",
-                "Sport",
                 "Business",
+                "Sport",              
                 "Innovation",
                 "Culture",
                 "Arts",

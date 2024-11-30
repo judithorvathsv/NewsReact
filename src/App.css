@@ -72,22 +72,25 @@ body {
   transform: translateX(-50%);
 }
 
-header img {
-  width: 2rem;
+header img, .header__account-image {
+  min-width: 2rem;
+  margin-left: -1rem;
   filter: brightness(0) invert(1);
 }
 
 /*--- NAVBAR Register and Login ---*/
 
 .header__login, .header__register{
-  padding-top: 15rem;
+  padding-top: 13rem;
 }
 
 .header__cancel-icon {
   width: 1.5rem;
   filter: brightness(0) contrast(100%);
   display: flex;
-  margin: 0 0 -5rem 27rem;
+  margin: 0 auto;
+  margin-bottom: 3rem;
+  margin-top: -2rem;  
   cursor: pointer;
 }
 
@@ -163,14 +166,14 @@ li:hover:before {
   transform: scaleX(1);
 }
 
-.active {
+header__nav-topic-dropdown .active {
   font-weight: bold;
   color: #D62839  ;
   position: relative;
   display: inline-block; /
 }
 
-.active::after {
+header__nav-topic-dropdown .active::after {
   content: '';
   position: absolute;
   left: 0;
@@ -182,7 +185,7 @@ li:hover:before {
   transition: transform 0.3s ease; /* Animation duration and easing */
 }
 
-.active::after {
+header__nav-topic-dropdown .active::after {
   transform: scaleX(1); /* Expand underline when active */
 }
 
@@ -341,8 +344,7 @@ li:hover:before {
       gap:1rem;
       padding: 2rem 0 1rem 0;
       font-size: 1.1rem;           
-      box-shadow: none;   
-      
+      box-shadow: none;         
   }
 
   .header__nav-topic-dropdown li {
@@ -350,6 +352,10 @@ li:hover:before {
       font-size: 1.2rem;
       font-weight: bold;
   } 
+
+  .header__cancel-icon {   
+    margin: 0 0 -2rem 27rem; 
+  }
 
 }
 
