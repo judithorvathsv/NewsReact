@@ -18,7 +18,7 @@ const FirstNew = ({
 
 
   return (
-    <article  onClick={handleClick} className="main__article w-full md:w-1/3 lg:w-1/4 xl:w-1/4 flex flex-row md:flex-col border-b border-gray-300 md:border-b-0 lg:border-b">
+    <article  onClick={handleClick} className="main__article main__article-first-article w-full md:w-1/3 lg:w-1/4 xl:w-1/4 flex flex-row md:flex-col border-b border-gray-300 md:border-b-0 lg:border-b">
       <img
         className="main__article-image w-1/2 md:w-full h-full md:h-1/2 lg:w-full lg:h-1/2 xl:w-full"
         src={urlToImage}

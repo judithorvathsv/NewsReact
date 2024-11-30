@@ -12,7 +12,7 @@ const New = ({ urlToImage, title, content, publishedAt, topic }: INewProps) => {
 
 
   return (
-    <article onClick={handleClick} className="main__article  sm:flex sm:flex-row flex   w-full sm:w-1/2 md:w-1/2 lg:w-full xl:w-full border-b border-gray-300 md:border-b-0 lg:border-b md:pr-4">
+    <article onClick={handleClick} className="main__article main__older-article  sm:flex sm:flex-row flex   w-full sm:w-1/2 md:w-1/2 lg:w-full xl:w-full border-b border-gray-300 md:border-b-0 lg:border-b md:pr-4">
       <img
         className="main__article-image w-1/2 h-full  md:hidden"
         src={urlToImage}

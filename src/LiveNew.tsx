@@ -10,7 +10,7 @@ const LiveNew = ({ urlToImage, title, content }: INewProps) => {
 
 
   return (
-    <article onClick={handleClick} className="main__article w-full md:w-2/3 lg:w-2/4 xl:w-2/4 flex flex-row md:flex-col border-b border-gray-300 border-b md:border-0">
+    <article onClick={handleClick} className="main__article main__article-live-article w-full md:w-2/3 lg:w-2/4 xl:w-2/4 flex flex-row md:flex-col border-b border-gray-300 border-b md:border-0">
       <img
         className="main__article-image w-1/2 md:w-full h-full md:h-2/3"
         src={urlToImage}
