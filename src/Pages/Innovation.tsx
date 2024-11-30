@@ -1,4 +1,4 @@
-import "../App.css";
+import "../App";
 import { useContext, useEffect } from "react";
 import { NewsContext } from "../context/NewsContextProvider";
 import {
@@ -8,12 +8,12 @@ import {
 
 import TopicNewsList from "../TopicNewsList";
 
-function Sport() {
+function Innovation() {
   const { allNews } = useContext(NewsContext);
 
   const filteredNews = allNews?.filter(
     (fetchedNew) =>
-      fetchedNew.topic === "Sport" &&
+      fetchedNew.topic === "Innovation" &&
       fetchedNew.title !== "[Removed]" &&
       fetchedNew.content !== null &&
       fetchedNew.content.length > 5
@@ -35,8 +35,8 @@ function Sport() {
   }, []);
 
   return (
-    <TopicNewsList filteredNews={filteredNews} selectedTopic={"Sport"}></TopicNewsList>
+    <TopicNewsList filteredNews={filteredNews} selectedTopic={"Innovation"}></TopicNewsList>
   );
 }
 
-export default Sport;
+export default Innovation

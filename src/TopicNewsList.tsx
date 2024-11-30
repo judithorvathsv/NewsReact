@@ -1,8 +1,10 @@
 
+import { useEffect } from 'react';
 import FirstNew from './FirstNew';
 import LiveNew from './LiveNew';
 import New from './New';
 import { INewProps } from './News';
+import { updateClampClassMobileShort, updateClampClassTabletLong } from './utilities/articleModifier';
 
 interface TopicNewsListProps {
     filteredNews: INewProps[]; 
@@ -10,6 +12,20 @@ interface TopicNewsListProps {
 }
 
 function TopicNewsList({filteredNews, selectedTopic}:TopicNewsListProps) {
+
+  useEffect(() => {
+    const handleResize = () => {
+      updateClampClassMobileShort();
+      updateClampClassTabletLong();
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+  
     return (
         <main className="main flex flex-wrap px-4 pt-20 md:pt-30 lg:pt-44">
           {filteredNews !== undefined && filteredNews.length > 0 && (

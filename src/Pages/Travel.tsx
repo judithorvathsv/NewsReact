@@ -8,12 +8,12 @@ import {
 
 import TopicNewsList from "../TopicNewsList";
 
-function Sport() {
+function Travel() {
   const { allNews } = useContext(NewsContext);
 
   const filteredNews = allNews?.filter(
     (fetchedNew) =>
-      fetchedNew.topic === "Sport" &&
+      fetchedNew.topic === "Travel" &&
       fetchedNew.title !== "[Removed]" &&
       fetchedNew.content !== null &&
       fetchedNew.content.length > 5
@@ -35,8 +35,8 @@ function Sport() {
   }, []);
 
   return (
-    <TopicNewsList filteredNews={filteredNews} selectedTopic={"Sport"}></TopicNewsList>
+    <TopicNewsList filteredNews={filteredNews} selectedTopic={"Travel"}></TopicNewsList>
   );
 }
 
-export default Sport;
+export default Travel
