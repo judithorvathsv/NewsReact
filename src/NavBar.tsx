@@ -5,8 +5,7 @@ import "./App.css";
 const NavBar = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
-  const toggleDropdown = () => {  
-    console.log("Dropdown toggled"); // Debugging line
+  const toggleDropdown = () => {      
     setDropdownVisible(prev => !prev);
   };
 
