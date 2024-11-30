@@ -19,6 +19,8 @@ function TopicNewsList({filteredNews, selectedTopic}:TopicNewsListProps) {
       updateClampClassTabletLong();
     };
 
+    handleResize();
+
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -28,7 +30,7 @@ function TopicNewsList({filteredNews, selectedTopic}:TopicNewsListProps) {
   
     return (
         <main className="main flex flex-wrap px-4 pt-20 md:pt-30 lg:pt-44">
-          {filteredNews !== undefined && filteredNews.length > 0 && (
+          {filteredNews !== undefined && filteredNews.length > 0 ? (
             <>
               {filteredNews.length > 0 && (
                 <FirstNew
@@ -83,7 +85,9 @@ function TopicNewsList({filteredNews, selectedTopic}:TopicNewsListProps) {
                     ))}
               </section>
             </>
-          )}
+          ) : (            
+            <p className='main__no-data' >No news articles available for the topic.</p>
+        )}
         </main>
       );
     }
