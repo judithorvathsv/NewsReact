@@ -89,7 +89,7 @@ const NavBar = () => {
                 "Earth",
               ].map((topic) => (
 
-                <NavLink className={"navLink"} to={`/news/${topic}`} key={topic} >
+                <NavLink  className={({ isActive }) => (isActive ? 'active' : '')} to={`/news/${topic}`} key={topic} >
                   <li onClick={hideDropdown}>
                     {topic}
                   </li>
