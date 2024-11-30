@@ -88,9 +88,15 @@ const NavBar = () => {
                 "Travel",
                 "Earth",
               ].map((topic) => (
-                <li key={topic} onClick={hideDropdown}>
-                  {topic}
-                </li>
+
+                <NavLink className={"navLink"} to={`/news/${topic}`}>
+                  <li key={topic} onClick={hideDropdown}>
+                    {topic}
+                  </li>
+              </NavLink>
+
+
+
               ))}
             </ul>
       

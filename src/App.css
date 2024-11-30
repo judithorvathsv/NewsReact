@@ -300,6 +300,12 @@ li:hover:before {
 }
 
 
+.main__no-sport-data{
+  margin-top: 8rem;
+  
+}
+
+
 /* ----- TABLET AND DESKTOP MODE ----- */
 
 @media (min-width: 768px) {

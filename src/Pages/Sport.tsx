@@ -1,66 +1,22 @@
-import "./App.css";
-import { useContext, useEffect, useState } from "react";
+import "../App.css";
+import { useContext, useEffect } from "react";
+import { NewsContext } from "../context/NewsContextProvider";
+import { updateClampClassMobileShort, updateClampClassTabletLong } from "../utilities/articleModifier";
+import FirstNew from "../FirstNew";
+import LiveNew from "../LiveNew";
+import New from "../New";
 
-import {
-  updateClampClassMobileShort,
-  updateClampClassTabletLong,
-} from "./utilities/articleModifier";
-import { fetchArticles } from "./utilities/articleFetch";
+function Sport() {
+    const {allNews} = useContext(NewsContext);
 
-import New from "./New";
-import FirstNew from "./FirstNew";
-import LiveNew from "./LiveNew";
-import { NewsContext } from "./context/NewsContextProvider";
-
-export interface INewProps {
-  urlToImage: string;
-  title: string;
-  content: string;
-  publishedAt: string;
-  topic: string;
-}
-
-export interface INewsProps {
-  new: INewProps;
-}
-
-function News() {
-  const [news, setNews] = useState<INewProps[]>();
-  const { setAllNews } = useContext(NewsContext); 
-
-  const topics = [
-    "Home",
-    "News",
-    "Sport",
-    "Business",
-    "Innovation",
-    "Culture",
-    "Arts",
-    "Travel",
-    "Earth",
-  ];
-
-  const getRandomTopic = () => {
-    const randomIndex = Math.floor(Math.random() * topics.length);
-    return topics[randomIndex];
-  };
+    const filteredNews = allNews?.filter(
+        (fetchedNew) => fetchedNew.topic === "Sport" && 
+                       fetchedNew.title !== "[Removed]" && 
+                       fetchedNew.content !== null && 
+                       fetchedNew.content.length > 5
+    );
 
   useEffect(() => {
-    async function getAllNews() {
-      const fetchedNews = await fetchArticles();
-
-      const articlesWithRandomTopics = fetchedNews.articles.map((article: INewProps) => ({
-        ...article,
-        topic: getRandomTopic(), 
-      }));
-      setNews(articlesWithRandomTopics);
-      setAllNews(articlesWithRandomTopics);
-      updateClampClassMobileShort();
-      updateClampClassTabletLong();
-    }
-
-    getAllNews().then((fetchedNew) => fetchedNew);
-
     const handleResize = () => {
       updateClampClassMobileShort();
       updateClampClassTabletLong();
@@ -71,15 +27,12 @@ function News() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [setNews]);
+  }, []);
 
-  const filteredNews = news?.filter(
-    (fetchedNew) =>
-      fetchedNew.title !== "[Removed]" && fetchedNew.content !==null && fetchedNew.content.length > 5
-  );
+
   return (
     <main className="main flex flex-wrap px-4 pt-20 md:pt-30 lg:pt-44">
-      {filteredNews !== undefined && filteredNews.length > 0 && (
+     {filteredNews && filteredNews.length > 0 ? (
         <>
           {filteredNews.length > 0 && (
             <FirstNew
@@ -87,7 +40,7 @@ function News() {
               title={filteredNews[0].title}
               content={filteredNews[0].content}
               publishedAt={filteredNews[0].publishedAt}
-              topic={getRandomTopic()}
+              topic={"Sport"}
               key={filteredNews[0].urlToImage}
             />
           )}
@@ -98,7 +51,7 @@ function News() {
               title={filteredNews[1].title}
               content={filteredNews[1].content}
               publishedAt={filteredNews[1].publishedAt}
-              topic={getRandomTopic()}
+              topic={"Sport"}
               key={filteredNews[1].urlToImage}
             />
           )}
@@ -111,7 +64,7 @@ function News() {
                   title={fetchedNew.title}
                   content={fetchedNew.content}
                   publishedAt={fetchedNew.publishedAt}
-                  topic={getRandomTopic()}
+                  topic={"Sport"}
                   key={fetchedNew.urlToImage}
                 />
               ))}
@@ -128,15 +81,18 @@ function News() {
                     title={fetchedNew.title}
                     content={fetchedNew.content}
                     publishedAt={fetchedNew.publishedAt}
-                    topic={getRandomTopic()}
+                    topic={"Sport"}
                     key={fetchedNew.urlToImage}
                   />
                 ))}
           </section>
         </>
-      )}
-    </main>
+      ) : (
+        <p className="main__no-sport-data">No sports news available.</p>
+    )}
+</main>
   );
 }
 
-export default News;
+
+export default Sport
