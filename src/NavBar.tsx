@@ -6,6 +6,7 @@ const NavBar = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
 
   const toggleDropdown = () => {  
+    console.log("Dropdown toggled"); // Debugging line
     setDropdownVisible(prev => !prev);
   };
 
@@ -76,7 +77,7 @@ const NavBar = () => {
 
           </article>
 
-          <ul className={`header__nav-topic-dropdown ${isDropdownVisible ? 'block' : 'hidden'} md:flex`}>
+          <ul className={`header__nav-topic-dropdown ${isDropdownVisible ? 'visible' : ''} `}>
               {[
                 "Home",
                 "News",
