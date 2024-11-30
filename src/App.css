@@ -79,6 +79,10 @@ header img {
 
 /*--- NAVBAR Register and Login ---*/
 
+.header__login, .header__register{
+  padding-top: 15rem;
+}
+
 .header__cancel-icon {
   width: 1.5rem;
   filter: brightness(0) contrast(100%);
