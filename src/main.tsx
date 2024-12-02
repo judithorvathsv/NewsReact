@@ -34,61 +34,62 @@ import React from "react";
 import { createRoot } from "react-dom/client";
 
 
+
 const router = createBrowserRouter([
   {
-    path: "/vite-react-router/",
+    path: "/NewsReact/",
     element: <App />,
     children: [
       {
-        path: "/vite-react-router/news/:id",
+        path: "news/:id",
         element: <New urlToImage={""} title={""} content={""} publishedAt={""} topic={""}/>,
       },
       {
-        path: "/vite-react-router/news",
+        path: "news",
         element: <News />,
       },
       {
-        path: "/vite-react-router/",
+        path: "",
         element: <News />,
       },
       {
-        path: "/vite-react-router/register",
+        path: "register",
         element: <Register />,
       },
       {
-        path: "/vite-react-router/login",
+        path: "login",
         element: <Login />,
       },
       {
-        path: "/vite-react-router/news/Home",
+        path: "news/Home",
         element: <News />,
       },
       {
-        path: "/vite-react-router/news/Business",
+        path: "news/Business",
         element: <Business />,
       },
       {
-        path: "/vite-react-router/news/Sport",
+        path: "news/Sport",
         element: <Sport />,
       },
       {
-        path: "/vite-react-router/news/Innovation",
+        path: "news/Innovation",
         element: <Innovation />,
       },
       {
-        path: "/vite-react-router/news/Culture",
+        path: "news/Culture",
         element: <Culture />,
       },
       {
-        path: "/vite-react-router/news/Arts",
+        path: "news/Arts",
         element: <Arts />,
       },
       {
-        path: "/vite-react-router/news/Travel",
+        path: "news/Travel",
         element: <Travel />,
       },
       {
-        path: "/vite-react-router/news/Earth",
+        path: "news/Earth",
         element: <Earth />,
       },
     ],

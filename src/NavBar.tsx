@@ -79,10 +79,10 @@ const NavBar = () => {
               </NavLink>
 
             <div className="hidden md:flex justify-between gap-4 w-40 text-lg header__register-and-signin-button-container">
-              <NavLink className={"navLink"} to={"/register"}>
+              <NavLink className={"navLink"} to={"register"}>
                 Register
               </NavLink>
-              <NavLink className={"navLink"} to={"/login"}>
+              <NavLink className={"navLink"} to={"login"}>
                 Sign in
               </NavLink>
             </div>
@@ -103,7 +103,7 @@ const NavBar = () => {
                 "Earth",
               ].map((topic) => (
 
-                <NavLink  className={({ isActive }) => (isActive ? 'active' : '')} to={`/news/${topic}`} key={topic} >
+                <NavLink  className={({ isActive }) => (isActive ? 'active' : '')} to={`news/${topic}`} key={topic} >
                   <li onClick={hideDropdown}>
                     {topic}
                   </li>
