@@ -4,7 +4,7 @@ import "./App.css";
 
 const NavBar = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  const [searchText, setSearchText] = useState({});
+  // const [searchText, setSearchText] = useState({});
 
   const toggleDropdown = () => {      
     setDropdownVisible(prev => !prev);
@@ -14,12 +14,12 @@ const NavBar = () => {
     setDropdownVisible(false);
   };
 
-    const handleChange = 
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      setSearchText(e.target.value);
-    };
+    // const handleChange = 
+    // (e: React.ChangeEvent<HTMLInputElement>) => {
+    //   setSearchText(e.target.value);
+    // };
 
-    console.log(searchText, "searchTexh")
+    // console.log(searchText, "searchTexh")
 
   return (
       <header className="header">
@@ -52,7 +52,7 @@ const NavBar = () => {
                     type="text"           
                     name="houseName"
                     id="searchedText"              
-                    onChange={e=> handleChange(e)} 
+                    // onChange={e=> handleChange(e)} 
                   />
                 </div>
               </form>
