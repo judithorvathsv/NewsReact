@@ -19,7 +19,7 @@ const NavBar = () => {
     //   setSearchText(e.target.value);
     // };
 
-    // console.log(searchText, "searchTexh")
+  
 
   return (
       <header className="header">
