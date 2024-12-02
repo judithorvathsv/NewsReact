@@ -166,14 +166,14 @@ li:hover:before {
   transform: scaleX(1);
 }
 
-header__nav-topic-dropdown .active {
+.header__nav-topic-dropdown .active {
   font-weight: bold;
   color: #D62839  ;
   position: relative;
   display: inline-block; 
 }
 
-header__nav-topic-dropdown .active::after {
+.header__nav-topic-dropdown .active::after {
   content: '';
   position: absolute;
   left: 0;
@@ -185,10 +185,9 @@ header__nav-topic-dropdown .active::after {
   transition: transform 0.3s ease; /* Animation duration and easing */
 }
 
-header__nav-topic-dropdown .active::after {
+.header__nav-topic-dropdown .active::after {
   transform: scaleX(1); /* Expand underline when active */
 }
-
 
 /* ---- MAIN PART ---- */
 
