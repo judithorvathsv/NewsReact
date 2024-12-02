@@ -10,7 +10,7 @@ function Login() {
             <NavLink className={"navLink"} to={"/"}>
               <img
                 className="header__cancel-icon"
-                src="/NewsReact/src/assets/images/cancelIcon.svg"
+                src="/NewsReact/public/assets/images/cancelIcon.svg"
                 alt="cancel login icon"
               />
             </NavLink>

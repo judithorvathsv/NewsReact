@@ -32,7 +32,7 @@ const NavBar = () => {
           <article className="header__nav-upper-row">
             <div className="header__menu-icon-and-search-form-container">
             <img    
-              src="/NewsReact/src/assets/images/menuIcon.svg"
+              src="/NewsReact/public/assets/images/menuIcon.svg"
               onClick={toggleDropdown} 
               alt="menu icon"
               className="header__menu-icon lg:hidden"
@@ -72,7 +72,7 @@ const NavBar = () => {
             <div>
               <NavLink className={"navLink"} to={"/login"}>
                 <img
-                  src="/NewsReact/src/assets/images/accountIcon.svg"
+                  src="/NewsReact/public/assets/images/accountIcon.svg"
                   alt="account icon"
                   className="header__account-image md:hidden"
                 />

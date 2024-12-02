@@ -9,7 +9,7 @@ function Register() {
           <NavLink className={"navLink"} to={"/"}>
             <img
               className="header__cancel-icon"
-              src="/NewsReact/src/assets/images/cancelIcon.svg"
+              src="/NewsReact/public/assets/images/cancelIcon.svg"
               alt="cancel registration icon"
             />
           </NavLink>
