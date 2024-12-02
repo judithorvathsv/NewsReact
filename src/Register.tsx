@@ -19,12 +19,9 @@ function Register() {
           </h2>
 
           <div className="mt-2 text-center max-w">
-            <a
-              href="#"
-              className="font-medium text-blue-700 hover:text-blue-900 focus:outline-none focus:underline transition ease-in-out duration-150"
-            >
+            <NavLink className={ "navLink font-medium text-blue-700 hover:text-blue-900 focus:outline-none focus:underline transition ease-in-out duration-150"} to={"/login"}>
               Or login to your account
-            </a>
+            </NavLink>
           </div>
         </section>
 

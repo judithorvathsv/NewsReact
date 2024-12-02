@@ -20,12 +20,9 @@ function Login() {
             </h2>
 
             <div className="mt-2 text-center max-w">
-              <a
-                href="#"
-                className="text-blue-700 hover:text-blue-900 focus:outline-none focus:underline transition ease-in-out duration-150"
-              >
-                Or create a new acccount
-              </a>
+            <NavLink className={ "navLink font-medium text-blue-700 hover:text-blue-900 focus:outline-none focus:underline transition ease-in-out duration-150"} to={"/register"}>
+            Or create a new acccount
+            </NavLink>   
             </div>
           </section>
 

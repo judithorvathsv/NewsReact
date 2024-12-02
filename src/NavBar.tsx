@@ -4,6 +4,7 @@ import "./App.css";
 
 const NavBar = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
+  const [searchText, setSearchText] = useState({});
 
   const toggleDropdown = () => {      
     setDropdownVisible(prev => !prev);
@@ -12,6 +13,13 @@ const NavBar = () => {
   const hideDropdown = () => {
     setDropdownVisible(false);
   };
+
+    const handleChange = 
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchText(e.target.value);
+    };
+
+    console.log(searchText, "searchTexh")
 
   return (
       <header className="header">
@@ -41,7 +49,10 @@ const NavBar = () => {
                   </span>
                   <input
                     className="w-full bg-transparent text-white py-0 pl-0 pr-0 focus:outline-none"
-                    type="text" 
+                    type="text"           
+                    name="houseName"
+                    id="searchedText"              
+                    onChange={e=> handleChange(e)} 
                   />
                 </div>
               </form>
