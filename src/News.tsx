@@ -40,9 +40,19 @@ function News() {
     "Earth",
   ];
 
+  // const getRandomTopic = () => {
+  //   const randomIndex = Math.floor(Math.random() * topics.length);
+  //   return topics[randomIndex];
+  // };
+
   const getRandomTopic = () => {
-    const randomIndex = Math.floor(Math.random() * topics.length);
-    return topics[randomIndex];
+    return (callback: (topic: string) => void) => {
+      const randomIndex = Math.floor(Math.random() * topics.length);
+      const randomTopic = topics[randomIndex];
+      
+      // Call the callback function with the random topic
+      callback(randomTopic);
+    };
   };
 
   useEffect(() => {
