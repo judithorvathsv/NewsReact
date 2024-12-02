@@ -53,6 +53,7 @@ function News() {
         ...article,
         topic: getRandomTopic(), 
       }));
+
       setNews(articlesWithRandomTopics);
       setAllNews(articlesWithRandomTopics);
       updateClampClassMobileShort();
@@ -71,7 +72,7 @@ function News() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [setNews]);
+  }, [setNews, setAllNews, getRandomTopic]);
 
   const filteredNews = news?.filter(
     (fetchedNew) =>
