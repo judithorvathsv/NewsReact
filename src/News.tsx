@@ -11,6 +11,7 @@ import New from "./New";
 import FirstNew from "./FirstNew";
 import LiveNew from "./LiveNew";
 import { NewsContext } from "./context/NewsContextProvider";
+// import { INewProps } from './News';
 
 export interface INewProps {
   urlToImage: string;
@@ -24,32 +25,14 @@ export interface INewsProps {
   new: INewProps;
 }
 
-
 function News() {
   const [news, setNews] = useState<INewProps[]>();
-  const { setAllNews } = useContext(NewsContext); 
+  const { setAllNews, selectedText } = useContext(NewsContext); 
 
   const topics = useMemo(() => [
     "Home", "News", "Sport", "Business", "Innovation",
     "Culture", "Arts", "Travel", "Earth",
   ], []); 
-
-  // const topics = [
-  //   "Home",
-  //   "News",
-  //   "Sport",
-  //   "Business",
-  //   "Innovation",
-  //   "Culture",
-  //   "Arts",
-  //   "Travel",
-  //   "Earth",
-  // ];
-
-  // const getRandomTopic = () => {
-  //   const randomIndex = Math.floor(Math.random() * topics.length);
-  //   return topics[randomIndex];
-  // }; 
 
   const getRandomTopic = useCallback(() => {
     const randomIndex = Math.floor(Math.random() * topics.length);
@@ -59,12 +42,7 @@ function News() {
 
   useEffect(() => {
     async function getAllNews() {
-      const fetchedNews = await fetchArticles();     
-
-      // const articlesWithRandomTopics = fetchedNews.articles.map((article: INewProps) => ({
-      //   ...article,
-      //   topic: getRandomTopic(), 
-      // }));
+      const fetchedNews = await fetchArticles();       
 
       const articlesWithRandomTopics = fetchedNews.articles.map((article: INewProps) => ({
         ...article,
@@ -89,12 +67,25 @@ function News() {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [setNews, setAllNews, getRandomTopic]);
+  }, [setNews, setAllNews, getRandomTopic, selectedText]);
 
-  const filteredNews = news?.filter(
-    (fetchedNew) =>
-      fetchedNew.title !== "[Removed]" && fetchedNew.content !==null && fetchedNew.content.length > 5
-  );
+  // const filteredNews = news?.filter(
+  //   (fetchedNew) =>
+  //     fetchedNew.title !== "[Removed]" && fetchedNew.content !==null && fetchedNew.content.length > 5
+  // );
+
+  const filteredNews = useMemo(() => {
+    return news?.filter(
+      (fetchedNew) =>
+        fetchedNew.title !== "[Removed]" &&
+        fetchedNew.content !== null &&
+        fetchedNew.content.length > 5 &&
+        (selectedText === "" || fetchedNew.title.toLowerCase().includes(selectedText.toLowerCase()))
+    );
+  }, [news, selectedText]);
+
+
+
   return (
     <main className="main flex flex-wrap px-4 pt-20 md:pt-30 lg:pt-44">
       {filteredNews !== undefined && filteredNews.length > 0 && (

@@ -170,7 +170,7 @@ header__nav-topic-dropdown .active {
   font-weight: bold;
   color: #D62839  ;
   position: relative;
-  display: inline-block; /
+  display: inline-block; 
 }
 
 header__nav-topic-dropdown .active::after {

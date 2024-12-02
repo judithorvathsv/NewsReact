@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "./App.css";
+import { NewsContext } from "./context/NewsContextProvider";
+
+
 
 const NavBar = () => {
   const [isDropdownVisible, setDropdownVisible] = useState(false);
-  // const [searchText, setSearchText] = useState({});
+  const [searchText, setSearchText] = useState({});
+  const { setSelectedText } = useContext(NewsContext);
+
+  console.log(searchText, 'text')
 
   const toggleDropdown = () => {      
     setDropdownVisible(prev => !prev);
@@ -14,25 +20,23 @@ const NavBar = () => {
     setDropdownVisible(false);
   };
 
-    // const handleChange = 
-    // (e: React.ChangeEvent<HTMLInputElement>) => {
-    //   setSearchText(e.target.value);
-    // };
-
-  
+    const handleChange = 
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchText(e.target.value);
+      setSelectedText(e.target.value)
+    };  
 
   return (
       <header className="header">
         <nav className="header__nav">
           <article className="header__nav-upper-row">
             <div className="header__menu-icon-and-search-form-container">
-            <img
-              src="/src/assets/images/menuIcon.svg"
+            <img    
+              src="/NewsReact/src/assets/images/menuIcon.svg"
               onClick={toggleDropdown} 
               alt="menu icon"
               className="header__menu-icon lg:hidden"
             />
-
               <form className="header__search-form">
                 <div className="flex items-center">
                   <span className="flex items-center pr-1">
@@ -52,7 +56,7 @@ const NavBar = () => {
                     type="text"           
                     name="houseName"
                     id="searchedText"              
-                    // onChange={e=> handleChange(e)} 
+                    onChange={e=> handleChange(e)} 
                   />
                 </div>
               </form>
@@ -68,7 +72,7 @@ const NavBar = () => {
             <div>
               <NavLink className={"navLink"} to={"/login"}>
                 <img
-                  src="/src/assets/images/accountIcon.svg"
+                  src="/NewsReact/src/assets/images/accountIcon.svg"
                   alt="account icon"
                   className="header__account-image md:hidden"
                 />
