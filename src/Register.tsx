@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./App.css";
+import cancelIcon from './assets/images/cancelIcon.svg';
 
 function Register() {
   return (
@@ -9,7 +10,7 @@ function Register() {
           <NavLink className={"navLink"} to={"/"}>
             <img
               className="header__cancel-icon"
-              src="/NewsReact/public/assets/images/cancelIcon.svg"
+              src={cancelIcon}
               alt="cancel registration icon"
             />
           </NavLink>

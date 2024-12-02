@@ -2,6 +2,8 @@ import { useState, useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "./App.css";
 import { NewsContext } from "./context/NewsContextProvider";
+import accountIcon from './assets/images/accountIcon.svg';
+import menuIcon from './assets/images/menuIcon.svg';
 
 
 
@@ -32,7 +34,7 @@ const NavBar = () => {
           <article className="header__nav-upper-row">
             <div className="header__menu-icon-and-search-form-container">
             <img    
-              src="/NewsReact/public/assets/images/menuIcon.svg"
+              src={menuIcon}
               onClick={toggleDropdown} 
               alt="menu icon"
               className="header__menu-icon lg:hidden"
@@ -72,7 +74,8 @@ const NavBar = () => {
             <div>
               <NavLink className={"navLink"} to={"/login"}>
                 <img
-                  src="/NewsReact/public/assets/images/accountIcon.svg"
+                  //src="assets/images/accountIcon.svg"
+                  src={accountIcon}
                   alt="account icon"
                   className="header__account-image md:hidden"
                 />
