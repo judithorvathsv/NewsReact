@@ -1,5 +1,5 @@
 import "./App.css";
-import { useContext, useEffect, useState } from "react";
+import {  useContext, useEffect, useState, useCallback, useMemo   } from "react";
 
 import {
   updateClampClassMobileShort,
@@ -24,44 +24,51 @@ export interface INewsProps {
   new: INewProps;
 }
 
+
 function News() {
   const [news, setNews] = useState<INewProps[]>();
   const { setAllNews } = useContext(NewsContext); 
 
-  const topics = [
-    "Home",
-    "News",
-    "Sport",
-    "Business",
-    "Innovation",
-    "Culture",
-    "Arts",
-    "Travel",
-    "Earth",
-  ];
+  const topics = useMemo(() => [
+    "Home", "News", "Sport", "Business", "Innovation",
+    "Culture", "Arts", "Travel", "Earth",
+  ], []); 
+
+  // const topics = [
+  //   "Home",
+  //   "News",
+  //   "Sport",
+  //   "Business",
+  //   "Innovation",
+  //   "Culture",
+  //   "Arts",
+  //   "Travel",
+  //   "Earth",
+  // ];
 
   // const getRandomTopic = () => {
   //   const randomIndex = Math.floor(Math.random() * topics.length);
   //   return topics[randomIndex];
-  // };
+  // }; 
 
-  const getRandomTopic = () => {
-    return (callback: (topic: string) => void) => {
-      const randomIndex = Math.floor(Math.random() * topics.length);
-      const randomTopic = topics[randomIndex];
-      
-      // Call the callback function with the random topic
-      callback(randomTopic);
-    };
-  };
+  const getRandomTopic = useCallback(() => {
+    const randomIndex = Math.floor(Math.random() * topics.length);
+    return topics[randomIndex];
+  }, [topics]);
+
 
   useEffect(() => {
     async function getAllNews() {
-      const fetchedNews = await fetchArticles();
+      const fetchedNews = await fetchArticles();     
+
+      // const articlesWithRandomTopics = fetchedNews.articles.map((article: INewProps) => ({
+      //   ...article,
+      //   topic: getRandomTopic(), 
+      // }));
 
       const articlesWithRandomTopics = fetchedNews.articles.map((article: INewProps) => ({
         ...article,
-        topic: getRandomTopic(), 
+        topic: getRandomTopic(),
       }));
 
       setNews(articlesWithRandomTopics);
