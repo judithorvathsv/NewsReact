@@ -7,7 +7,7 @@ function Register() {
     <article className="header__register">
       <div className="bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
         <section className="header__register-title-container sm:mx-auto sm:w-full sm:max-w-md">
-          <NavLink className={"navLink"} to={"/"}>
+          <NavLink className={"navLink"} to={"news"}>
             <img
               className="header__cancel-icon"
               src={cancelIcon}

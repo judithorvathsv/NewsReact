@@ -8,7 +8,7 @@ function Login() {
       <article className="header__login">
         <div className="bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8 px-6">
           <section className="header__login-title-container sm:mx-auto sm:w-full sm:max-w-md">
-            <NavLink className={"navLink"} to={"/"}>
+            <NavLink className={"navLink"} to={"news"}>
               <img
                 className="header__cancel-icon"
                 src={cancelIcon}
